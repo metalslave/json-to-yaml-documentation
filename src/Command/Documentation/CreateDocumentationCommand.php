@@ -59,7 +59,7 @@ final class CreateDocumentationCommand extends AbstractBaseCommand
 
         $jsonFilename = $input->getOption('json-file');
         $yamlFilename = $input->getOption('yml-file');
-        $this->fieldName = (string) $input->getOption('field-name');
+        $fieldName = $input->getOption('field-name');
 
         if (!\is_string($jsonFilename)) {
             throw new BadRequestHttpException('json filename required');
@@ -71,9 +71,7 @@ final class CreateDocumentationCommand extends AbstractBaseCommand
             $yamlFilename .= '.yaml';
         }
 
-        if (empty($this->fieldName)) {
-            $this->fieldName = 'ObjectField';
-        }
+        $this->fieldName = !empty($fieldName) && \is_string($fieldName) ?$fieldName : 'ObjectField';
 
         $this->createDocumentation($jsonFilename, $yamlFilename);
 
