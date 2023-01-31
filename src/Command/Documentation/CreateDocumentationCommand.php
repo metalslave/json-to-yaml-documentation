@@ -6,8 +6,6 @@ namespace App\Command\Documentation;
 
 use App\Command\AbstractBaseCommand;
 use App\Request\RequestHelper;
-use StfalconStudio\ApiBundle\Traits\EntityManagerTrait;
-use StfalconStudio\ApiBundle\Traits\ValidatorTrait;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -18,9 +16,6 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 #[AsCommand(name: 'app:doc:create', description: 'Create yaml file documentation from json file response')]
 final class CreateDocumentationCommand extends AbstractBaseCommand
 {
-    use EntityManagerTrait;
-    use ValidatorTrait;
-
     private const RESOURCE_FILE_PATH = '/app/documentation/resource/';
     private const RESULT_FILE_PATH = '/app/documentation/result/';
     private const ONE_TAB = '  '; // 2 spaces
